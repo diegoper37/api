@@ -145,8 +145,7 @@ final class AnnotationReader implements Reader
         $this->parser->setTarget(Target::TARGET_CLASS);
         $this->parser->setImports($this->getImports($class));
         $this->parser->setIgnoredAnnotationNames($this->getIgnoredAnnotationNames($class));
-        $this->parser->parse($class->getDocComment(), 'class ' . $class->getName());
-        echo __FILE__.' '.__LINE__;exit;
+
         return $this->parser->parse($class->getDocComment(), 'class ' . $class->getName());
     }
 

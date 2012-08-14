@@ -2,9 +2,11 @@
 namespace Api;
 
 /**
- * @Table(name="batatinha")
+ *
+ * @author Diego
+ *
  */
-class Diego
+class Diego extends Model
 {
 
     /**

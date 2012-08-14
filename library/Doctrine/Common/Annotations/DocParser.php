@@ -275,6 +275,7 @@ final class DocParser
         if ($pos > 0) {
             $pos -= 1;
         }
+
         $this->context = $context;
         $this->lexer->setInput(trim(substr($input, $pos), '* /'));
         $this->lexer->moveNext();
@@ -518,6 +519,7 @@ final class DocParser
                 $annotations[] = $annot;
             }
         }
+
         return $annotations;
     }
 
