@@ -16,24 +16,5 @@ $classLoader->register();
 $classLoader = new \Doctrine\Common\ClassLoader('Doctrine');
 $classLoader->register();
 
-use Doctrine\Common\Annotations,
-	Doctrine\ORM\Mapping;
-
-$diego = new Api\Diego();
-$class = new \ReflectionClass($diego);
-/**
- * @Annotation
- * @Target("CLASS")
- */
-final class Table
-{
-    public $name;
-}
-
-$factory = new Doctrine\ORM\Mapping\ClassMetadataFactory;
-$factory->getMetadataFor('Api\Diego');
-/* $reflaction = new Doctrine\Common\Annotations\AnnotationReader();
-$all = $reflaction->getClassAnnotation($class, 'Table');
-print_r($all); */
-//echo $reflection->getAnnotation('Table')->value;
-//var_dump($docs);
+$reflection = new Api\Annotation\ReflectionAnnotatedClass('Api\\Route\\Diego');
+echo $reflection->getAnnotation('Api\\Mapping\\Route')->value;

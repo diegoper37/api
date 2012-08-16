@@ -172,20 +172,8 @@ class ClassMetadataFactory implements ClassMetadataFactoryInterface
                 }
             }
 
-            if ($this->cacheDriver) {
-                if (($cached = $this->cacheDriver->fetch("$realClassName\$CLASSMETADATA")) !== false) {
-                    $this->wakeupReflection($cached, $this->getReflectionService());
-                    $this->loadedMetadata[$realClassName] = $cached;
-                } else {
-                    foreach ($this->loadMetadata($realClassName) as $loadedClassName) {
-                        $this->cacheDriver->save(
-                            "$loadedClassName\$CLASSMETADATA", $this->loadedMetadata[$loadedClassName], null
-                        );
-                    }
-                }
-            } else {
-                $this->loadMetadata($realClassName);
-            }
+
+            $this->loadMetadata($realClassName);
 
             if ($className != $realClassName) {
                 // We do not have the alias name in the map, include it
@@ -330,13 +318,9 @@ class ClassMetadataFactory implements ClassMetadataFactoryInterface
 
             $class->setParentClasses($visited);
 
-            if ($this->evm->hasListeners(Events::loadClassMetadata)) {
-                $eventArgs = new \Doctrine\ORM\Event\LoadClassMetadataEventArgs($class, $this->em);
-                $this->evm->dispatchEvent(Events::loadClassMetadata, $eventArgs);
-            }
             $this->wakeupReflection($class, $this->getReflectionService());
 
-            $this->validateRuntimeMetadata($class, $parent);
+            //$this->validateRuntimeMetadata($class, $parent);
 
             $this->loadedMetadata[$className] = $class;
 

@@ -1,12 +1,12 @@
 <?php
-namespace Api;
-
+namespace Api\Route;
 /**
  *
  * @author Diego
- *
+ * @Route("roteador 1")
+ * @Target("okokok target")
  */
-class Diego extends Model
+class Diego
 {
 
     /**
