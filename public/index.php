@@ -17,4 +17,23 @@ $classLoader = new \Doctrine\Common\ClassLoader('Doctrine');
 $classLoader->register();
 
 $reflection = new Api\Annotation\ReflectionAnnotatedClass('Api\\Route\\Diego');
-echo $reflection->getAnnotation('Api\\Mapping\\Route')->value;
+echo '<pre>';
+echo 'comentario na classe<br>';
+print_r($reflection->getAnnotation('Api\Mapping\Route'));
+echo '-----------------<br>';
+echo 'comentario nos metodos<br>';
+$props = $reflection->getProperties();
+foreach ($props as $prop){
+    if($prop->hasAnnotation('Api\Mapping\Route')){
+        print_r($prop);
+    }
+}
+echo '-----------------<br>';
+echo 'comentario nos atributos<br>';
+$meths = $reflection->getMethods();
+foreach ($meths as $meth){
+    if($meth->hasAnnotation('Api\Mapping\Route')){
+        print_r($meth->getAnnotations());
+    }
+}
+

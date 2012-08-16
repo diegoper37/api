@@ -3,27 +3,23 @@ namespace Api\Route;
 /**
  *
  * @author Diego
- * @Route("roteador 1")
- * @Target("okokok target")
+ * @Route("route class")
  */
 class Diego
 {
+    /** @Route("route atributo") */
+    protected $batatinhas = 'ok';
 
     /**
-     * batatinhas 123
+     * @Route("route metodo 1")
+     * @Route("route metodo 2")
      */
-    public function __construct ()
+    public function teste( $param )
     {
-        return 'ok';
+        return 'batatinhas';
     }
 
-    /**
-     * cabummm
-     * 1222
-     * @ORM\Column(type="string", length=20, unique=true)
-     * @ teste
-     */
-    public function teste()
+    public function teste2( $param )
     {
         return 'batatinhas';
     }
