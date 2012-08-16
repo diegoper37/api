@@ -21,7 +21,7 @@ class AnnotationsCollection {
     public function getAnnotations() {
         $result = array();
         foreach($this->annotations as $instances) {
-            $result[] = end($instances);
+            $result[] = $instances;
         }
         return $result;
     }
