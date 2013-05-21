@@ -1,6 +1,7 @@
 {
 	"name" : "diegopimentel/api",
 	"description" : "Api",
+	"version":"1.0",
 	"type" : "git",
 	"keywords" : [],
 	"license" : [
